@@ -1,0 +1,37 @@
+CREATE DATABASE IF NOT EXISTS summitlogic_gateflow
+    CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE summitlogic_gateflow;
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ---------- DROP OLD TABLES IN DEPENDENCY ORDER ----------
+DROP TABLE IF EXISTS game_progress;
+DROP TABLE IF EXISTS game_questions;
+DROP TABLE IF EXISTS games;
+
+DROP TABLE IF EXISTS inventory_flight;
+DROP TABLE IF EXISTS inventory_ground;
+
+DROP TABLE IF EXISTS audits;
+
+DROP TABLE IF EXISTS pack_events;
+DROP TABLE IF EXISTS pack_plan_items;
+DROP TABLE IF EXISTS pack_plans;
+DROP TABLE IF EXISTS trays;
+DROP TABLE IF EXISTS carts;
+
+DROP TABLE IF EXISTS bottle_events;
+DROP TABLE IF EXISTS bottle_instances;
+DROP TABLE IF EXISTS airline_beverage_rules;
+
+DROP TABLE IF EXISTS food;
+DROP TABLE IF EXISTS snacks;
+DROP TABLE IF EXISTS beverages;
+DROP TABLE IF EXISTS items;
+
+DROP TABLE IF EXISTS flights;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS airlines;
+
+SET FOREIGN_KEY_CHECKS = 1;
