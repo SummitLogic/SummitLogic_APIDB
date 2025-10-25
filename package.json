@@ -2,8 +2,7 @@
   "name": "summitlogic-apidb",
   "version": "1.0.0",
   "description": "SummitLogic API Database with CRUD capabilities",
-  "type": "module",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "node dist/src/index.js",
