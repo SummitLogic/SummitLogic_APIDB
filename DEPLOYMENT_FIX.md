@@ -29,18 +29,25 @@ The TypeScript configuration was compiled to ES2020 modules (ESM format), but:
 ```
 
 ### 2. Updated `package.json`
-- Removed `"type": "module"` declaration
+- Changed start script from `node dist/src/index.js` → `node dist/index.js`
 - Changed main entry point from `dist/src/index.js` → `dist/index.js`
 
 **Before:**
 ```json
-"type": "module",
 "main": "dist/src/index.js",
+"scripts": {
+  "start": "node dist/src/index.js",
+  ...
+}
 ```
 
 **After:**
 ```json
 "main": "dist/index.js",
+"scripts": {
+  "start": "node dist/index.js",
+  ...
+}
 ```
 
 ## Result
