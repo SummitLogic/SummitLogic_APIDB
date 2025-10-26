@@ -326,10 +326,12 @@
                 <div class="endpoint-body">
                     <strong>Request Body:</strong>
                     <pre>{
-  "email": "user@example.com",
-  "password": "securePassword123",
   "firstName": "John",
-  "lastName": "Doe"
+  "lastName": "Doe",
+  "email": "john@example.com",
+  "username": "johndoe",
+  "role": "Flight Crew",
+  "password": "securePassword123"
 }</pre>
                     <strong style="margin-top: 10px; display: block;">Response:</strong>
                     <pre>{
@@ -338,9 +340,11 @@
   "token": "eyJhbGciOiJIUzI1NiIs...",
   "user": {
     "id": "1",
-    "email": "user@example.com",
     "firstName": "John",
-    "lastName": "Doe"
+    "lastName": "Doe",
+    "email": "john@example.com",
+    "username": "johndoe",
+    "role": "Flight Crew"
   }
 }</pre>
                 </div>
@@ -353,7 +357,7 @@
                     <span class="endpoint-path">/api/auth/login</span>
                 </div>
                 <div class="endpoint-description">
-                    <strong>Description:</strong> Authenticate user with email and password, returns JWT token
+                    <strong>Description:</strong> Authenticate user with email and password, returns JWT token and user details
                 </div>
                 <div class="endpoint-body">
                     <strong>Request Body:</strong>
@@ -370,7 +374,9 @@
     "id": "1",
     "email": "user@example.com",
     "firstName": "John",
-    "lastName": "Doe"
+    "lastName": "Doe",
+    "username": "johndoe",
+    "role": "Flight Crew"
   }
 }</pre>
                 </div>
