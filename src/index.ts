@@ -6,6 +6,11 @@ import { config } from './config/environment';
 import { errorHandler } from './middleware/auth';
 import authRoutes from './routes/auth';
 import healthRoutes from './routes/health';
+import airlinesRouter from './routes/airlines';
+import flightsRouter from './routes/flights';
+import itemsRouter from './routes/items';
+import inventoryRouter from './routes/inventory';
+import gamesRouter from './routes/games';
 
 dotenv.config();
 
@@ -20,6 +25,11 @@ app.use(express.static('public'));
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/health', healthRoutes);
+app.use('/api/airlines', airlinesRouter);
+app.use('/api/flights', flightsRouter);
+app.use('/api/items', itemsRouter);
+app.use('/api/inventory', inventoryRouter);
+app.use('/api/games', gamesRouter);
 
 // Home route
 app.get('/', (req: express.Request, res: express.Response) => {

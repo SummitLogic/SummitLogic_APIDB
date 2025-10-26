@@ -381,6 +381,363 @@
 }</pre>
                 </div>
             </div>
+
+            <!-- AIRLINES ENDPOINTS -->
+            <h3 style="color: #667eea; margin: 30px 0 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px;">✈️ Airlines Management</h3>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/airlines</span>
+                </div>
+                <div class="endpoint-description">Get all airlines</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/airlines/:id</span>
+                </div>
+                <div class="endpoint-description">Get airline by ID</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/airlines</span>
+                </div>
+                <div class="endpoint-description">Create new airline</div>
+                <div class="endpoint-body"><pre>{ "name": "Spirit Airlines", "iata_code": "NK", "icao_code": "NKS" }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #FF9800;">PUT</span>
+                    <span class="endpoint-path">/api/airlines/:id</span>
+                </div>
+                <div class="endpoint-description">Update airline</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #f44336;">DELETE</span>
+                    <span class="endpoint-path">/api/airlines/:id</span>
+                </div>
+                <div class="endpoint-description">Delete airline</div>
+            </div>
+
+            <!-- FLIGHTS ENDPOINTS -->
+            <h3 style="color: #667eea; margin: 30px 0 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px;">🛫 Flights Management</h3>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/flights</span>
+                </div>
+                <div class="endpoint-description">Get all flights with airline info</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/flights/:id</span>
+                </div>
+                <div class="endpoint-description">Get flight by ID</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/flights</span>
+                </div>
+                <div class="endpoint-description">Create new flight</div>
+                <div class="endpoint-body"><pre>{ "airline_id": 1, "flight_number": "AM123", "direction": "Outbound", "aircraft_type": "Boeing 737", "departure_airport": "MEX", "arrival_airport": "LAX", "scheduled_departure": "2024-02-20T14:30:00Z", "capacity_seats": 180 }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #FF9800;">PUT</span>
+                    <span class="endpoint-path">/api/flights/:id</span>
+                </div>
+                <div class="endpoint-description">Update flight</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #f44336;">DELETE</span>
+                    <span class="endpoint-path">/api/flights/:id</span>
+                </div>
+                <div class="endpoint-description">Delete flight</div>
+            </div>
+
+            <!-- ITEMS ENDPOINTS -->
+            <h3 style="color: #667eea; margin: 30px 0 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px;">📦 Items & Catalog Management</h3>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/items/all/items</span>
+                </div>
+                <div class="endpoint-description">Get all catalog items (supports category & is_active filters)</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/items/items/:id</span>
+                </div>
+                <div class="endpoint-description">Get item by ID</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/items/items</span>
+                </div>
+                <div class="endpoint-description">Create new item</div>
+                <div class="endpoint-body"><pre>{ "name": "Coca Cola", "brand": "Coca-Cola", "category": "Beverage", "unit_desc": "Can", "size_desc": "355ml", "is_active": 1 }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #FF9800;">PUT</span>
+                    <span class="endpoint-path">/api/items/items/:id</span>
+                </div>
+                <div class="endpoint-description">Update item</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #f44336;">DELETE</span>
+                    <span class="endpoint-path">/api/items/items/:id</span>
+                </div>
+                <div class="endpoint-description">Delete item</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/items/beverages</span>
+                </div>
+                <div class="endpoint-description">Get all beverages with item details</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/items/beverages</span>
+                </div>
+                <div class="endpoint-description">Create new beverage</div>
+                <div class="endpoint-body"><pre>{ "item_id": 1, "type": "Soft Drink", "flavour": "Classic", "volume_ml": 355, "default_pack_qty": 12 }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/items/snacks</span>
+                </div>
+                <div class="endpoint-description">Get all snacks with item details</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/items/snacks</span>
+                </div>
+                <div class="endpoint-description">Create new snack</div>
+                <div class="endpoint-body"><pre>{ "item_id": 5, "type": "Potato Chips", "size_grams": 42, "default_pack_qty": 24 }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/items/food</span>
+                </div>
+                <div class="endpoint-description">Get all food items with item details</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/items/food</span>
+                </div>
+                <div class="endpoint-description">Create new food item</div>
+                <div class="endpoint-body"><pre>{ "item_id": 10, "ingredients": "Chicken, Bread, Lettuce", "serving_size": "1 sandwich", "default_pack_qty": 20 }</pre></div>
+            </div>
+
+            <!-- INVENTORY ENDPOINTS -->
+            <h3 style="color: #667eea; margin: 30px 0 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px;">📊 Inventory Management</h3>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/inventory/bottles</span>
+                </div>
+                <div class="endpoint-description">Get all bottles (supports status & airline_id filters)</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/inventory/bottles</span>
+                </div>
+                <div class="endpoint-description">Create new bottle instance (initialized at 100%)</div>
+                <div class="endpoint-body"><pre>{ "beverage_item_id": 2, "airline_id": 1 }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #FF9800;">PUT</span>
+                    <span class="endpoint-path">/api/inventory/bottles/:id</span>
+                </div>
+                <div class="endpoint-description">Update bottle status and fill percentage</div>
+                <div class="endpoint-body"><pre>{ "current_pct": 65, "status": "Partial", "last_flight_id": 5 }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/inventory/pack-plans</span>
+                </div>
+                <div class="endpoint-description">Get all pack plans (supports flight_id & user_id filters)</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/inventory/pack-plans</span>
+                </div>
+                <div class="endpoint-description">Create new pack plan (draft status)</div>
+                <div class="endpoint-body"><pre>{ "flight_id": 1, "user_id": 5 }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #FF9800;">PUT</span>
+                    <span class="endpoint-path">/api/inventory/pack-plans/:id</span>
+                </div>
+                <div class="endpoint-description">Update pack plan status</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/inventory/carts</span>
+                </div>
+                <div class="endpoint-description">Get all carts (supports flight_id filter)</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/inventory/carts</span>
+                </div>
+                <div class="endpoint-description">Create new cart</div>
+                <div class="endpoint-body"><pre>{ "code": "CART-001", "cart_type": "Beverage", "flight_id": 1 }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #FF9800;">PUT</span>
+                    <span class="endpoint-path">/api/inventory/carts/:id</span>
+                </div>
+                <div class="endpoint-description">Update cart details</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/inventory/trays</span>
+                </div>
+                <div class="endpoint-description">Get all trays (supports cart_id filter)</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/inventory/trays</span>
+                </div>
+                <div class="endpoint-description">Create new tray</div>
+                <div class="endpoint-body"><pre>{ "cart_code": "CART-001", "item_id": 1, "quantity": 24 }</pre></div>
+            </div>
+
+            <!-- GAMES ENDPOINTS -->
+            <h3 style="color: #667eea; margin: 30px 0 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px;">🎮 Gamification Management</h3>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/games</span>
+                </div>
+                <div class="endpoint-description">Get all games (active by default)</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/games/:id</span>
+                </div>
+                <div class="endpoint-description">Get game by ID with all questions</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/games</span>
+                </div>
+                <div class="endpoint-description">Create new game</div>
+                <div class="endpoint-body"><pre>{ "title": "Trivia Challenge", "description": "Test your knowledge", "is_active": 1 }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #FF9800;">PUT</span>
+                    <span class="endpoint-path">/api/games/:id</span>
+                </div>
+                <div class="endpoint-description">Update game details</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method" style="background: #f44336;">DELETE</span>
+                    <span class="endpoint-path">/api/games/:id</span>
+                </div>
+                <div class="endpoint-description">Delete game</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/games/:gameId/questions</span>
+                </div>
+                <div class="endpoint-description">Get all questions for a game</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/games/:gameId/questions</span>
+                </div>
+                <div class="endpoint-description">Create new game question</div>
+                <div class="endpoint-body"><pre>{ "question_text": "What is the highest altitude?", "options_json": ["35000", "43000", "50000"], "correct_option": 1, "order_index": 0 }</pre></div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-get">GET</span>
+                    <span class="endpoint-path">/api/games/progress/all</span>
+                </div>
+                <div class="endpoint-description">Get all game progress (supports user_id, game_id, question_id filters)</div>
+            </div>
+
+            <div class="endpoint">
+                <div>
+                    <span class="endpoint-method method-post">POST</span>
+                    <span class="endpoint-path">/api/games/progress</span>
+                </div>
+                <div class="endpoint-description">Record game progress (user answer)</div>
+                <div class="endpoint-body"><pre>{ "user_id": 5, "game_id": 1, "question_id": 1, "user_answer": "43000", "is_correct": true }</pre></div>
+            </div>
         </div>
 
         <div class="test-section">
