@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0a1428 0%, #1a2a4a 50%, #0f1419 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -24,19 +24,33 @@
         }
 
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
         }
 
         h1 {
-            color: #667eea;
+            color: #ffffff;
             font-size: 2.5em;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header-content {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 15px;
         }
 
@@ -51,7 +65,7 @@
         }
 
         .subtitle {
-            color: #666;
+            color: #cccccc;
             font-size: 1.1em;
             margin-top: 10px;
         }
@@ -71,9 +85,10 @@
         }
 
         .info-card h3 {
-            color: #667eea;
+            color: #1e90ff;
             margin-bottom: 10px;
             font-size: 1.1em;
+            font-weight: 600;
         }
 
         .info-card p {
@@ -103,21 +118,25 @@
         }
 
         .endpoints-section {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .endpoints-section h2 {
-            color: #667eea;
+            color: #1e90ff;
             margin-bottom: 25px;
             font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 0.3px;
         }
 
         .endpoint {
             background: #f8f9fa;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #1e90ff;
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 5px;
@@ -195,18 +214,26 @@
             font-size: 1.2em;
         }
 
+        .logo-img {
+            height: 400px;
+            width: auto;
+        }
+
         .test-section {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 30px;
             margin-top: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .test-section h2 {
-            color: #667eea;
+            color: #1e90ff;
             margin-bottom: 20px;
             font-size: 1.6em;
+            font-weight: 700;
         }
 
         .button-group {
@@ -216,7 +243,7 @@
         }
 
         button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%);
             color: white;
             border: none;
             padding: 12px 24px;
@@ -262,32 +289,15 @@
 <body>
     <div class="container">
         <header>
+            <img src="Images/SmartGateLogo.png" alt="SummitLogic Logo" class="logo-img">
             <h1>
-                <span class="api-icon">🏔️</span>
-                <span class="api-title">SummitLogic API</span>
-                <span class="status-badge" id="status">ONLINE</span>
+                <div class="header-content">
+                    <span class="api-title">SummitLogic API</span>
+                    <span class="status-badge" id="status">ONLINE</span>
+                </div>
             </h1>
             <p class="subtitle">A TypeScript REST API with Authentication & CRUD Capabilities</p>
         </header>
-
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>🚀 Version</h3>
-                <p>1.0.0</p>
-            </div>
-            <div class="info-card">
-                <h3>🔧 Tech Stack</h3>
-                <p>Node.js, Express.js, TypeScript, MySQL</p>
-            </div>
-            <div class="info-card">
-                <h3>🔒 Security</h3>
-                <p>JWT Auth, Bcrypt Hashing, Helmet.js</p>
-            </div>
-            <div class="info-card">
-                <h3>📊 Database</h3>
-                <p id="db-status"><span class="status-indicator"></span> Checking...</p>
-            </div>
-        </div>
 
         <div class="endpoints-section">
             <h2>📡 API Endpoints</h2>
@@ -383,7 +393,7 @@
             </div>
 
             <!-- AIRLINES ENDPOINTS -->
-            <h3 style="color: #667eea; margin: 30px 0 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px;">✈️ Airlines Management</h3>
+            <h3 style="color: #1e90ff; margin: 30px 0 20px; border-bottom: 2px solid #1e90ff; padding-bottom: 10px;">✈️ Airlines Management</h3>
 
             <div class="endpoint">
                 <div>
@@ -427,7 +437,7 @@
             </div>
 
             <!-- FLIGHTS ENDPOINTS -->
-            <h3 style="color: #667eea; margin: 30px 0 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px;">🛫 Flights Management</h3>
+            <h3 style="color: #1e90ff; margin: 30px 0 20px; border-bottom: 2px solid #1e90ff; padding-bottom: 10px;">🛫 Flights Management</h3>
 
             <div class="endpoint">
                 <div>
@@ -471,7 +481,7 @@
             </div>
 
             <!-- ITEMS ENDPOINTS -->
-            <h3 style="color: #667eea; margin: 30px 0 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px;">📦 Items & Catalog Management</h3>
+            <h3 style="color: #1e90ff; margin: 30px 0 20px; border-bottom: 2px solid #1e90ff; padding-bottom: 10px;">📦 Items & Catalog Management</h3>
 
             <div class="endpoint">
                 <div>
@@ -566,7 +576,7 @@
             </div>
 
             <!-- INVENTORY ENDPOINTS -->
-            <h3 style="color: #667eea; margin: 30px 0 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px;">📊 Inventory Management</h3>
+            <h3 style="color: #1e90ff; margin: 30px 0 20px; border-bottom: 2px solid #1e90ff; padding-bottom: 10px;">📊 Inventory Management</h3>
 
             <div class="endpoint">
                 <div>
@@ -662,7 +672,7 @@
             </div>
 
             <!-- GAMES ENDPOINTS -->
-            <h3 style="color: #667eea; margin: 30px 0 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px;">🎮 Gamification Management</h3>
+            <h3 style="color: #1e90ff; margin: 30px 0 20px; border-bottom: 2px solid #1e90ff; padding-bottom: 10px;">🎮 Gamification Management</h3>
 
             <div class="endpoint">
                 <div>
