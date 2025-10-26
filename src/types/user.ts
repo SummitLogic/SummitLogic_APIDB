@@ -1,4 +1,4 @@
-export type UserRole = 'Flight Crew' | 'Ground Crew';
+export type UserRole = 'Flight Crew' | 'Ground Crew' | 'FlightCrew' | 'GroundCrew' | 'Supervisor';
 
 export interface User {
   id?: string;
@@ -17,7 +17,7 @@ export interface RegisterRequest {
   lastName: string;
   email: string;
   username: string;
-  role: UserRole;
+  role: UserRole | string;
   password: string;
 }
 
@@ -30,5 +30,5 @@ export interface AuthResponse {
   success: boolean;
   message: string;
   token?: string;
-  user?: Omit<User, 'password'>;
+  user?: Omit<User, 'password'> & { role?: string };
 }

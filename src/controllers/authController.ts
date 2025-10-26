@@ -1,10 +1,31 @@
 import type { Response } from 'express';
 import type { AuthRequest } from '../middleware/auth';
-import type { RegisterRequest, LoginRequest, AuthResponse } from '../types/user';
+import type { RegisterRequest, LoginRequest, AuthResponse, UserRole } from '../types/user';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import pool from '../config/database';
 import { config } from '../config/environment';
+
+// Convert frontend role format to database format
+const convertRoleToDatabase = (frontendRole: string): string => {
+  const roleMap: Record<string, string> = {
+    'Flight Crew': 'FlightCrew',
+    'FlightCrew': 'FlightCrew',
+    'Ground Crew': 'GroundCrew',
+    'GroundCrew': 'GroundCrew',
+  };
+  return roleMap[frontendRole] || frontendRole;
+};
+
+// Convert database role format to frontend format
+const convertRoleToFrontend = (dbRole: string): string => {
+  const roleMap: Record<string, string> = {
+    'FlightCrew': 'Flight Crew',
+    'GroundCrew': 'Ground Crew',
+    'Supervisor': 'Supervisor',
+  };
+  return roleMap[dbRole] || dbRole;
+};
 
 export const register = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
@@ -20,13 +41,16 @@ export const register = async (req: AuthRequest, res: Response): Promise<void> =
     }
 
     // Validate role
-    if (role !== 'Flight Crew' && role !== 'Ground Crew') {
+    if (role !== 'Flight Crew' && role !== 'Ground Crew' && role !== 'FlightCrew' && role !== 'GroundCrew') {
       res.status(400).json({
         success: false,
         message: 'Role must be either "Flight Crew" or "Ground Crew"',
       });
       return;
     }
+
+    // Convert role to database format
+    const dbRole = convertRoleToDatabase(role);
 
     const connection = await pool.getConnection();
 
@@ -56,15 +80,15 @@ export const register = async (req: AuthRequest, res: Response): Promise<void> =
       // Hash password
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      // Create user
+      // Create user with database-format role
       const [result] = await connection.query(
         'INSERT INTO users (first_name, last_name, email, username, role, password_hash) VALUES (?, ?, ?, ?, ?, ?)',
-        [firstName, lastName, email, username, role, hashedPassword]
+        [firstName, lastName, email, username, dbRole, hashedPassword]
       );
 
       const insertResult = result as any;
       const token = jwt.sign(
-        { id: insertResult.insertId.toString(), email, username, role },
+        { id: insertResult.insertId.toString(), email, username, role: dbRole },
         config.jwtSecret,
         { expiresIn: config.jwtExpiry }
       );
@@ -79,7 +103,7 @@ export const register = async (req: AuthRequest, res: Response): Promise<void> =
           lastName,
           email,
           username,
-          role,
+          role: convertRoleToFrontend(dbRole) as UserRole,
         },
       };
 
@@ -152,7 +176,7 @@ export const login = async (req: AuthRequest, res: Response): Promise<void> => {
           firstName: user.first_name,
           lastName: user.last_name,
           username: user.username,
-          role: user.role,
+          role: convertRoleToFrontend(user.role) as UserRole,
         },
       };
 
