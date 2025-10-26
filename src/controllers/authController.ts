@@ -58,7 +58,7 @@ export const register = async (req: AuthRequest, res: Response): Promise<void> =
 
       // Create user
       const [result] = await connection.query(
-        'INSERT INTO users (firstName, lastName, email, username, role, password) VALUES (?, ?, ?, ?, ?, ?)',
+        'INSERT INTO users (first_name, last_name, email, username, role, password_hash) VALUES (?, ?, ?, ?, ?, ?)',
         [firstName, lastName, email, username, role, hashedPassword]
       );
 
@@ -125,7 +125,7 @@ export const login = async (req: AuthRequest, res: Response): Promise<void> => {
       const user = (users as any[])[0];
 
       // Compare password
-      const isPasswordValid = await bcrypt.compare(password, user.password);
+      const isPasswordValid = await bcrypt.compare(password, user.password_hash);
 
       if (!isPasswordValid) {
         res.status(401).json({
@@ -149,8 +149,10 @@ export const login = async (req: AuthRequest, res: Response): Promise<void> => {
         user: {
           id: user.id.toString(),
           email: user.email,
-          firstName: user.firstName,
-          lastName: user.lastName,
+          firstName: user.first_name,
+          lastName: user.last_name,
+          username: user.username,
+          role: user.role,
         },
       };
 
