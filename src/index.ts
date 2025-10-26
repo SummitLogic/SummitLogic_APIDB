@@ -11,6 +11,7 @@ import flightsRouter from './routes/flights';
 import itemsRouter from './routes/items';
 import inventoryRouter from './routes/inventory';
 import gamesRouter from './routes/games';
+import scannerRouter from './routes/scanner';
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use('/api/flights', flightsRouter);
 app.use('/api/items', itemsRouter);
 app.use('/api/inventory', inventoryRouter);
 app.use('/api/games', gamesRouter);
+app.use('/api/scanner', scannerRouter);
 
 // Home route
 app.get('/', (req: express.Request, res: express.Response) => {
