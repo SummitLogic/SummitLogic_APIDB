@@ -293,3 +293,15 @@ CREATE TABLE game_progress (
                                KEY idx_gp_game (game_id)
 ) ENGINE=InnoDB;
 
+-- ============================================================================
+-- QR CODE VALIDATION SYSTEM
+-- ============================================================================
+-- Permanent table for scanner endpoint to validate QR codes
+CREATE TABLE known_qr_codes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    beverage_name VARCHAR(255) UNIQUE,
+    qr_url LONGTEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_qr_url (qr_url(255))
+) ENGINE=InnoDB;
